@@ -31,6 +31,7 @@ public class EvaluationService {
 	 */
 	public String acronym(String phrase) {
 		// TODO Write an implementation for this method declaration
+		System.out.println("answer for question2");
 		return null;
 	}
 
