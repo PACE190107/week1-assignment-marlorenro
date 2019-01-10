@@ -31,9 +31,25 @@ public class EvaluationService {
 	 */
 	public String acronym(String phrase) {
 		// TODO Write an implementation for this method declaration
-		System.out.println("answer for question2");
+		//String mystring = new String("How Now Brown Cow");
+		System.out.println(phrase);
+		String[] arr = phrase.split(" |-");
+		for(int i = 0; i < arr.length; i++) {
+			System.out.println(arr[i]);
+			}
+		String acronym =  phrase;
+		acronym += i.charat;
+		
+		
+		System.out.println("//////////////////////////////////");
+//		
+//		for (mystring : arr)
+//		
+//			System.out.println([0,0,0,0]);
 		return null;
 	}
+	
+	
 
 	/**
 	 * 3. Determine if a triangle is equilateral, isosceles, or scalene. An
