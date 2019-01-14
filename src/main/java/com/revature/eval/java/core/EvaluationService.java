@@ -1,6 +1,7 @@
 package com.revature.eval.java.core;
 
 import java.time.temporal.Temporal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -15,7 +16,7 @@ public class EvaluationService {
 	 */
 	public String reverse(String string) {
 		char[] reversed = new char[string.length()];
-		for (int i = reversed.length - 1, j=0; i >= 0; i--, j++) {
+		for (int i = reversed.length - 1, j = 0; i >= 0; i--, j++) {
 			reversed[j] = string.charAt(i);
 		}
 		return new String(reversed);
@@ -31,25 +32,33 @@ public class EvaluationService {
 	 */
 	public String acronym(String phrase) {
 		// TODO Write an implementation for this method declaration
-		//String mystring = new String("How Now Brown Cow");
-		System.out.println(phrase);
+		// String mystring = new String("How Now Brown Cow");
+		// System.out.println(phrase);
 		String[] arr = phrase.split(" |-");
-		for(int i = 0; i < arr.length; i++) {
-			System.out.println(arr[i]);
-			}
-		String acronym =  phrase;
-		acronym += i.charat;
-		
-		
-		System.out.println("//////////////////////////////////");
+
+		String s = "";
+		for (int i = 0; i < arr.length; i++) {
+			char firstLetter = arr[i].charAt(0);
+			s += (arr[i]);
+		}
+		s.toUpperCase();
+
+//		String a = arr.toString();
+//		
+//		a.charAt(0);
+//		System.out.println(a);
+
+		// System.out.println(a);
+		// String acronym = phrase;
+		// acronym.charat;
+
+//				System.out.println("//////////////////////////////////");
 //		
 //		for (mystring : arr)
 //		
 //			System.out.println([0,0,0,0]);
-		return null;
+		return s;
 	}
-	
-	
 
 	/**
 	 * 3. Determine if a triangle is equilateral, isosceles, or scalene. An
@@ -102,16 +111,48 @@ public class EvaluationService {
 
 		public boolean isEquilateral() {
 			// TODO Write an implementation for this method declaration
+			System.out.println(sideOne);
+			System.out.println(sideTwo);
+			System.out.println(sideThree);
+
+			if (sideOne == sideTwo && sideTwo == sideThree && sideThree == sideOne) {
+				System.out.println("This triangle is Equilateral");
+				return true;
+			} else {
+				System.out.println("This triangle is not Equilateral");
+
+			}
+
 			return false;
 		}
 
 		public boolean isIsosceles() {
 			// TODO Write an implementation for this method declaration
+
+			if (sideOne == sideTwo && sideTwo != sideThree) {
+				return true;
+
+			} else if (sideOne == sideThree && sideTwo != sideOne) {
+				System.out.println("This triangle is Isosceles");
+				return true;
+			} else if (sideTwo == sideThree && sideTwo != sideOne) {
+				System.out.println("This triangle is not Isosceles");
+				return true;
+			}
+
 			return false;
 		}
 
 		public boolean isScalene() {
 			// TODO Write an implementation for this method declaration
+
+			if (sideOne != sideTwo && sideTwo != sideThree && sideThree != sideOne) {
+				System.out.println("This triangle is Scalene");
+				return true;
+			} else {
+				System.out.println("This triangle is not Scalene");
+			}
+
 			return false;
 		}
 
@@ -134,6 +175,10 @@ public class EvaluationService {
 	 */
 	public int getScrabbleScore(String string) {
 		// TODO Write an implementation for this method declaration
+
+		String x = "";
+		x.replaceAll("-", "");
+
 		return 0;
 	}
 
@@ -170,6 +215,8 @@ public class EvaluationService {
 	 */
 	public String cleanPhoneNumber(String string) {
 		// TODO Write an implementation for this method declaration
+		System.out.println(string);
+		string.
 		return null;
 	}
 
@@ -184,7 +231,10 @@ public class EvaluationService {
 	 */
 	public Map<String, Integer> wordCount(String string) {
 		// TODO Write an implementation for this method declaration
+
+		System.out.println(string);
 		return null;
+
 	}
 
 	/**
@@ -264,7 +314,41 @@ public class EvaluationService {
 	 */
 	public String toPigLatin(String string) {
 		// TODO Write an implementation for this method declaration
-		return null;
+	boolean isMatch = false; 
+		
+	List<Character> vowelList = new ArrayList <Character>();
+	vowelList.add('a');
+	vowelList.add('e');
+	vowelList.add('i');
+	vowelList.add('o');
+	vowelList.add('u');
+	
+//	vowelList.contains(Character.toString(string.charAt(0)));
+	
+	if (vowelList.contains(string.charAt(0))) {
+		string += "ay";
+		
+	}
+	else if (!vowelList.contains(string.charAt(0))) {
+		
+		
+		for (int i=0; i < string.length(); i++ ) {
+			//if a vowel is found break out of string loop
+			System.out.println(i);
+			if (vowelList.contains(string.charAt(i))) {
+				System.out.println(string.charAt(i));
+				String temp = string.substring(0, i);
+				System.out.println(temp);
+			}
+			
+			
+	
+			
+		}
+	}
+		
+		
+		return string;
 	}
 
 	/**

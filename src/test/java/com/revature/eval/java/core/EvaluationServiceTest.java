@@ -53,37 +53,37 @@ public class EvaluationServiceTest {
 //	public void testAPalindrome() {
 //		assertEquals("racecar", evaluationService.reverse("racecar"));
 //	}
-
+//
 	/*******************************************************************
-	 * Question 2
-	 ******************************************************************/
-	@Test
-	public void basic() {
-		final String phrase = "Portable Network Graphics";
-		final String expected = "PNG";
-		assertEquals(expected, evaluationService.acronym(phrase));
-	}
-
-	@Test
-	public void punctuation() {
-		final String phrase = "First In, First Out";
-		final String expected = "FIFO";
-		assertEquals(expected, evaluationService.acronym(phrase));
-	}
-
-	@Test
-	public void NonAcronymAllCapsWord() {
-		final String phrase = "GNU Image Manipulation Program";
-		final String expected = "GIMP";
-		assertEquals(expected, evaluationService.acronym(phrase));
-	}
-
-	@Test
-	public void punctuationWithoutWhitespace() {
-		final String phrase = "Complementary metal-oxide semiconductor";
-		final String expected = "CMOS";
-		assertEquals(expected, evaluationService.acronym(phrase));
-	}
+//	 * Question 2
+//	 ******************************************************************/
+//	@Test
+//	public void basic() {
+//		final String phrase = "Portable Network Graphics";
+//		final String expected = "PNG";
+//		assertEquals(expected, evaluationService.acronym(phrase));
+//	}
+//
+//	@Test
+//	public void punctuation() {
+//		final String phrase = "First In, First Out";
+//		final String expected = "FIFO";
+//		assertEquals(expected, evaluationService.acronym(phrase));
+//	}
+//
+//	@Test
+//	public void NonAcronymAllCapsWord() {
+//		final String phrase = "GNU Image Manipulation Program";
+//		final String expected = "GIMP";
+//		assertEquals(expected, evaluationService.acronym(phrase));
+//	}
+//
+//	@Test
+//	public void punctuationWithoutWhitespace() {
+//		final String phrase = "Complementary metal-oxide semiconductor";
+//		final String expected = "CMOS";
+//		assertEquals(expected, evaluationService.acronym(phrase));
+//	}
 //
 //	/*******************************************************************
 //	 * Question 3
@@ -106,7 +106,6 @@ public class EvaluationServiceTest {
 //		EvaluationService.Triangle triangle = new EvaluationService.Triangle(2, 3, 4);
 //		assertFalse(triangle.isIsosceles());
 //	}
-//
 //	@Test
 //	public void verySmallTrianglesCanBeIsosceles() {
 //		EvaluationService.Triangle triangle = new EvaluationService.Triangle(0.5, 0.4, 0.5);
@@ -116,7 +115,7 @@ public class EvaluationServiceTest {
 //	@Test
 //	public void trianglesWithAllSidesEqualAreNotScalene() {
 //		EvaluationService.Triangle triangle = new EvaluationService.Triangle(4, 4, 4);
-//		assertFalse(triangle.isScalene());
+//	assertFalse(triangle.isScalene());
 //	}
 //
 //	@Test
@@ -299,9 +298,9 @@ public class EvaluationServiceTest {
 //		assertEquals(5, search.indexOf(21));
 //	}
 //
-//	/*******************************************************************
-//	 * Question 8
-//	 ******************************************************************/
+	/*******************************************************************
+	 * Question 8
+	 ******************************************************************/
 //	@Test
 //	public void testWordBeginningWithA() {
 //		assertEquals("appleay", evaluationService.toPigLatin("apple"));
@@ -316,17 +315,17 @@ public class EvaluationServiceTest {
 //	public void testSchTreatedLikeAConsonantAtTheBeginningOfAWord() {
 //		assertEquals("oolschay", evaluationService.toPigLatin("school"));
 //	}
-//
-//	@Test
-//	public void testYTreatedLikeAConsonantAtTheBeginningOfAWord() {
-//		assertEquals("ellowyay", evaluationService.toPigLatin("yellow"));
-//	}
+
+	@Test
+	public void testYTreatedLikeAConsonantAtTheBeginningOfAWord() {
+		assertEquals("ellowyay", evaluationService.toPigLatin("yellow"));
+	}
 //
 //	@Test
 //	public void testAWholePhrase() {
 //		assertEquals("ickquay astfay unray", evaluationService.toPigLatin("quick fast run"));
 //	}
-//
+
 //	/*******************************************************************
 //	 * Question 9
 //	 ******************************************************************/
@@ -710,5 +709,4 @@ public class EvaluationServiceTest {
 //	public void testSingleDivision() {
 //		assertEquals(-11, evaluationService.solveWordProblem("What is 33 divided by -3?"));
 //	}
-
 }
