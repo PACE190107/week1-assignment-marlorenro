@@ -22,6 +22,10 @@ public class EvaluationService {
 		return new String(reversed);
 	}
 
+// ***********************************************************************
+// ***********************************************************************
+	
+	
 	/**
 	 * 2. Convert a phrase to its acronym. Techies love their TLA (Three Letter
 	 * Acronyms)! Help generate some jargon by writing a program that converts a
@@ -31,35 +35,32 @@ public class EvaluationService {
 	 * @return
 	 */
 	public String acronym(String phrase) {
-		// TODO Write an implementation for this method declaration
-		// String mystring = new String("How Now Brown Cow");
-		// System.out.println(phrase);
-		String[] arr = phrase.split(" |-");
+		
+		
+		String[] arr = phrase.split(" ");
 
-		String s = "";
-		for (int i = 0; i < arr.length; i++) {
-			char firstLetter = arr[i].charAt(0);
-			s += (arr[i]);
+		String retStr = "";
+		
+		char firstLetter;
+		
+		for (int i = 0; i < arr.length; i++)
+		{
+			firstLetter = arr[i].charAt(0);
+			retStr += firstLetter;
+			
+			//search for a hyphen
+			if( arr[i].lastIndexOf( "-" ) != -1 ) {
+				// Adds after the hyphen to the return string.				
+				retStr += arr[ i ].charAt( arr[i].lastIndexOf( "-" ) + 1 );	
+			}
 		}
-		s.toUpperCase();
-
-//		String a = arr.toString();
-//		
-//		a.charAt(0);
-//		System.out.println(a);
-
-		// System.out.println(a);
-		// String acronym = phrase;
-		// acronym.charat;
-
-//				System.out.println("//////////////////////////////////");
-//		
-//		for (mystring : arr)
-//		
-//			System.out.println([0,0,0,0]);
-		return s;
+		
+		return retStr.toUpperCase();
 	}
 
+// ***********************************************************************
+// ***********************************************************************
+	
 	/**
 	 * 3. Determine if a triangle is equilateral, isosceles, or scalene. An
 	 * equilateral triangle has all three sides the same length. An isosceles
@@ -110,11 +111,11 @@ public class EvaluationService {
 		}
 
 		public boolean isEquilateral() {
-			// TODO Write an implementation for this method declaration
-			System.out.println(sideOne);
+		
+/*          System.out.println(sideOne);
 			System.out.println(sideTwo);
 			System.out.println(sideThree);
-
+*/
 			if (sideOne == sideTwo && sideTwo == sideThree && sideThree == sideOne) {
 				System.out.println("This triangle is Equilateral");
 				return true;
@@ -127,7 +128,6 @@ public class EvaluationService {
 		}
 
 		public boolean isIsosceles() {
-			// TODO Write an implementation for this method declaration
 
 			if (sideOne == sideTwo && sideTwo != sideThree) {
 				return true;
@@ -144,7 +144,6 @@ public class EvaluationService {
 		}
 
 		public boolean isScalene() {
-			// TODO Write an implementation for this method declaration
 
 			if (sideOne != sideTwo && sideTwo != sideThree && sideThree != sideOne) {
 				System.out.println("This triangle is Scalene");
@@ -158,11 +157,22 @@ public class EvaluationService {
 
 	}
 
+// ***********************************************************************
+// ***********************************************************************
+	
 	/**
 	 * 4. Given a word, compute the scrabble score for that word.
 	 * 
-	 * --Letter Values-- Letter Value A, E, I, O, U, L, N, R, S, T = 1; D, G = 2; B,
-	 * C, M, P = 3; F, H, V, W, Y = 4; K = 5; J, X = 8; Q, Z = 10; Examples
+	 * --Letter Values-- Letter Value 
+	 * A, E, I, O, U, L, N, R, S, T = 1; 
+	 * D, G = 2;
+	 * B, C, M, P = 3; 
+	 * F, H, V, W, Y = 4;
+	 * K = 5;
+	 * J, X = 8;
+	 * Q, Z = 10;
+	 * 
+	 *  Examples
 	 * "cabbage" should be scored as worth 14 points:
 	 * 
 	 * 3 points for C, 1 point for A, twice 3 points for B, twice 2 points for G, 1
@@ -173,15 +183,70 @@ public class EvaluationService {
 	 * @param string
 	 * @return
 	 */
-	public int getScrabbleScore(String string) {
-		// TODO Write an implementation for this method declaration
+	public int getScrabbleScore(String str) {
 
-		String x = "";
-		x.replaceAll("-", "");
-
-		return 0;
+		int finalScore = 0;
+		
+		// For each character in 'str'
+		for( int i = 0; i < str.length(); i++ ){	
+			
+			switch( Character.toLowerCase( str.charAt( i ) ) ) {
+		
+				// 10 point
+				case 'q':
+				case 'z':
+					finalScore = finalScore + 10;
+					break;
+					
+				// 8 point
+				case 'j':					
+				case 'x':
+					finalScore = finalScore + 8;
+					break;
+					
+				//5 point
+				case 'k':
+					finalScore = finalScore + 5;
+					break;
+			
+				// 4 point
+				case 'f':					
+				case 'h':
+				case 'v':
+				case 'w':
+				case 'y':
+					finalScore = finalScore + 4;
+					break;
+					
+				// 3 point
+				case 'b':
+				case 'c':
+				case 'm':
+				case 'p':
+					finalScore = finalScore + 3;
+					break;
+					
+				// 2 point
+				case 'd':
+				case 'g':
+					finalScore = finalScore + 2;
+					break;
+				
+				// 1 point
+				default:
+					finalScore++;
+					break;
+		
+			}
+		}
+		
+		return finalScore;
 	}
 
+	
+// ***********************************************************************
+// ***********************************************************************	
+	
 	/**
 	 * 5. Clean up user-entered phone numbers so that they can be sent SMS messages.
 	 * 
@@ -213,13 +278,56 @@ public class EvaluationService {
 	 * Note: As this exercise only deals with telephone numbers used in
 	 * NANP-countries, only 1 is considered a valid country code.
 	 */
-	public String cleanPhoneNumber(String string) {
-		// TODO Write an implementation for this method declaration
-		System.out.println(string);
-		string.
-		return null;
+	public String cleanPhoneNumber( String str ) {
+		
+		String retStr = "";
+		
+		//for each number
+		for( int i = 0; i < str.length(); i++ ) {
+			
+	//get rid of +1
+			if( str.charAt(i) == '+' ) {
+				if( str.charAt( i + 1 ) == '1' ) {
+					i+=2;
+				} else {
+					i++;
+				}
+			} else {
+				switch( str.charAt( i ) ) {
+					case '9':
+					case '8':
+					case '7':
+					case '6':
+					case '5':
+					case '4':
+					case '3':
+					case '2':
+					case '1':
+					case '0':
+						retStr += str.charAt( i );
+						break;
+					
+					default:
+						break;
+				}
+				
+			}
+		
+		}
+		
+		//Invalid Arguments for phone numbers
+		if( retStr.length() > 11 || retStr.length() < 10 ) {
+			throw new IllegalArgumentException();
+		}
+		
+		System.out.println(retStr);
+		
+		return retStr;
 	}
 
+// ***********************************************************************
+// ***********************************************************************
+	
 	/**
 	 * 6. Given a phrase, count the occurrences of each word in that phrase.
 	 * 
@@ -233,6 +341,8 @@ public class EvaluationService {
 		// TODO Write an implementation for this method declaration
 
 		System.out.println(string);
+		
+		
 		return null;
 
 	}
@@ -303,7 +413,9 @@ public class EvaluationService {
 	 * difficult for non-children (and non-native speakers) to understand.
 	 * 
 	 * Rule 1: If a word begins with a vowel sound, add an "ay" sound to the end of
-	 * the word. Rule 2: If a word begins with a consonant sound, move it to the end
+	 * the word. 
+	 * 
+	 * Rule 2: If a word begins with a consonant sound, move it to the end
 	 * of the word, and then add an "ay" sound to the end of the word. There are a
 	 * few more rules for edge cases, and there are regional variants too.
 	 * 
@@ -312,43 +424,49 @@ public class EvaluationService {
 	 * @param string
 	 * @return
 	 */
-	public String toPigLatin(String string) {
-		// TODO Write an implementation for this method declaration
-	boolean isMatch = false; 
+	public String toPigLatin( String str ) {
 		
-	List<Character> vowelList = new ArrayList <Character>();
-	vowelList.add('a');
-	vowelList.add('e');
-	vowelList.add('i');
-	vowelList.add('o');
-	vowelList.add('u');
-	
-//	vowelList.contains(Character.toString(string.charAt(0)));
-	
-	if (vowelList.contains(string.charAt(0))) {
-		string += "ay";
+		String finalStr = "";
 		
-	}
-	else if (!vowelList.contains(string.charAt(0))) {
+		//  Break apart a string phrase 
+		String[] arr = str.split(" ");
+					
 		
+		for ( int i = 0; i< arr.length; i++ ) {
 		
-		for (int i=0; i < string.length(); i++ ) {
-			//if a vowel is found break out of string loop
-			System.out.println(i);
-			if (vowelList.contains(string.charAt(i))) {
-				System.out.println(string.charAt(i));
-				String temp = string.substring(0, i);
-				System.out.println(temp);
+			// If the word is a phrase do each word in pig latin
+			if( i > 0 ) { finalStr += " "; }
+			
+			// Word Begins with Vowel
+			if( str.charAt(0) == 'a' || str.charAt(0) == 'e' ||
+					str.charAt(0) == 'i' || str.charAt(0) == 'o' ||
+					str.charAt(0) == 'u' ) {
+						finalStr = arr[i] + "ay";		
+			} else {
+				
+				// World begins with Consonant
+			
+				if( arr[i].charAt(0) == 'Q' || arr[i].charAt(0) == 'q' ) {
+					if( arr[i].charAt(1) == 'U' || arr[i].charAt(1) == 'u' ) {
+						finalStr = finalStr +  arr[i].substring(2, arr[i].length() ) + "quay";
+					}	
+				}else if( arr[i].charAt(0) == 'T' || arr[i].charAt(0) == 't' ) {
+					if( arr[i].charAt(1) == 'H' || arr[i].charAt(1) == 'h' ) {
+						finalStr = finalStr + arr[i].substring(2, arr[i].length() ) + "thay";
+					}
+				} else if( arr[i].charAt(0) == 'S' || arr[i].charAt(0) == 's' ) {
+					if( arr[i].charAt(1) == 'C' || arr[i].charAt(1) == 'c' ) {
+						if( arr[i].charAt(2) == 'H' || arr[i].charAt(2) == 'h' ) {
+							finalStr = finalStr + arr[i].substring(3, arr[i].length( ) ) + "schay";
+						}
+					}				
+				} else {
+					finalStr = finalStr + arr[i].substring(1, arr[i].length( ) ) + arr[i].charAt(0) + "ay"; 
+				}
 			}
-			
-			
-	
-			
 		}
-	}
 		
-		
-		return string;
+		return finalStr;
 	}
 
 	/**
@@ -368,6 +486,8 @@ public class EvaluationService {
 	 */
 	public boolean isArmstrongNumber(int input) {
 		// TODO Write an implementation for this method declaration
+		//Java program to determine whether the number is Armstrong number or not
+		
 		return false;
 	}
 
